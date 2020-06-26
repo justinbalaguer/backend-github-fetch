@@ -3,12 +3,23 @@ const morgan = require('morgan'); /* logger */
 const helmet = require('helmet'); /* protection */
 const cors = require('cors');
 const middlewares = require('./middlewares');
+const github = require('./api/github');
+
+require('dotenv').config();
+
+/* mongoose */
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 const app = express();
 
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors());
+app.use(express.json());
 
 /* routes */
 app.get('/', (req, res) => {
@@ -16,6 +27,8 @@ app.get('/', (req, res) => {
         message: "👌",
     });
 });
+
+app.use('/api/github', github);
 
 /* errorHandler middlerware */
 app.use(middlewares.notFound);

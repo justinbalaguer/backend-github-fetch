@@ -1,6 +1,8 @@
+* Dev Setup
+
 * [x] Setup server
-* [ ] Setup DB
-* [ ] Setup cronjob
-* [ ] GET from GitHub API
-* [ ] POST /api/github (updates only)
-* [ ] GET /api/github
+* [x] Setup DB
+* [x] Setup cronjob
+* [x] GET from GitHub API
+* [x] save to db (remove previous data then replace with new)
+* [x] GET /api/github
