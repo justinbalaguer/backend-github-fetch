@@ -70,9 +70,13 @@ cron.schedule("0 * * * *", () => {
 
 /* main route */
 
-router.get('/', async (req, res) => {
-    const repos = await GithubRequest.find();
-    res.json(repos);
+router.get('/', async (req, res, next) => {
+    try {
+   	 const repos = await GithubRequest.find();
+   	 res.json(repos);
+    } catch(error) {
+	next(error);
+    }
 });
 
 module.exports = router;
