@@ -6,6 +6,7 @@ const middlewares = require('./middlewares');
 const github = require('./api/github');
 
 require('dotenv').config();
+require('./cron/index');
 
 /* mongoose */
 const mongoose = require('mongoose');
